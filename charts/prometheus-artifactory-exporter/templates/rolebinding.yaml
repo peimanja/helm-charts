@@ -1,0 +1,18 @@
+{{- if .Values.rbac.create -}}
+apiVersion: {{ template "rbac.apiVersion" . }}
+kind: RoleBinding
+metadata:
+  name: {{ template "prometheus-artifactory-exporter.fullname" . }}
+  labels:
+    app: {{ template "prometheus-artifactory-exporter.name" . }}
+    chart: {{ template "prometheus-artifactory-exporter.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ template "prometheus-artifactory-exporter.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ template "prometheus-artifactory-exporter.serviceAccountName" . }}
+{{- end -}}

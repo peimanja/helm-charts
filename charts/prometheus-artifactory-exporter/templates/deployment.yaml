@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus-artifactory-exporter.fullname" . }}
+  labels:
+    app: {{ template "prometheus-artifactory-exporter.name" . }}
+    chart: {{ template "prometheus-artifactory-exporter.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "prometheus-artifactory-exporter.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "prometheus-artifactory-exporter.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      serviceAccountName: {{ template "prometheus-artifactory-exporter.serviceAccountName" . }}
+      {{- with .Values.initContainers }}
+      initContainers: {{ toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args:
+            - "--log.level={{ .Values.options.logLevel }}"
+            - "--log.format={{ .Values.options.logFormat }}"
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+          {{- with .Values.resources }}
+          resources: {{ toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.extraVolumeMounts }}
+          volumeMounts: {{ toYaml . | nindent 12 }}
+          {{- end }}
+          env:
+            - name: WEB_LISTEN_ADDR
+              value: {{ printf ":%v" .Values.service.port }}
+            - name: WEB_TELEMETRY_PATH
+              value: {{ .Values.options.telemetryPath | quote }}
+            - name: ARTI_SCRAPE_URI
+              value: {{ .Values.artifactory.url | quote }}
+            - name: ARTI_SSL_VERIFY
+              value: {{ .Values.options.verifySSL | quote }}
+            - name: ARTI_TIMEOUT
+              value: {{ .Values.options.timeout| quote }}
+          envFrom:
+            - secretRef:
+                name: {{ template "prometheus-artifactory-exporter.secret" . }}
+
+        {{- with .Values.extraContainers }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector: {{ toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity: {{ toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations: {{ toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.extraVolumes }}
+      volumes: {{ toYaml . | nindent 8 }}
+    {{- end }}

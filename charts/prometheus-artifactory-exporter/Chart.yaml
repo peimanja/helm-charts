@@ -1,0 +1,13 @@
+apiVersion: v1
+appVersion: "1.9.1"
+description: A Helm chart for the Prometheus Artifactory Exporter
+name: prometheus-artifactory-exporter
+version: 0.1.0
+keywords:
+  - metrics
+  - artifactory
+  - monitoring
+home: https://github.com/peimanja/artifactory_exporter
+maintainers:
+  - name: peimanja
+    email: peyman.ja@gmail.com
