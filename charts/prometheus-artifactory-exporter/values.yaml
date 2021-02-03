@@ -32,7 +32,7 @@ artifactory:
   url: http://artifactory:8081/artifactory
   user: ""
   pass: ""
-  accessToken: ""
+  accessToken: "xxxxxxxxxxxxxxxxxxxxxxxx"
   existingSecret: false
 
 # visit https://github.com/peimanja/artifactory_exporter#flags
