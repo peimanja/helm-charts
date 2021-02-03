@@ -21,7 +21,7 @@ _See [helm repo](https://helm.sh/docs/helm/helm_repo/) for command documentation
 
 ```console
 # Helm 3
-$ helm install [RELEASE_NAME] peimanja/prometheus-artifactory-exporter
+helm install [RELEASE_NAME] peimanja/prometheus-artifactory-exporter
 ```
 
 _See [configuration](#configuration) below._
@@ -43,7 +43,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 
 ```console
 # Helm 3
-$ helm upgrade [RELEASE_NAME] [CHART] --install
+helm upgrade [RELEASE_NAME] [CHART] --install
 ```
 
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
@@ -53,7 +53,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-$ helm show values peimanja/prometheus-artifactory-exporter
+helm show values peimanja/prometheus-artifactory-exporter
 ```
 
 ### Flags
