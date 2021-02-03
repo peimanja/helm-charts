@@ -53,7 +53,6 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values.yaml](./values.yaml), or run these configuration commands:
 
 ```console
-# Helm 3
 $ helm show values peimanja/prometheus-artifactory-exporter
 ```
 
