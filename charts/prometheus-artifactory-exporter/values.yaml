@@ -35,7 +35,7 @@ artifactory:
   accessToken: ""
   existingSecret: false
 
-# visit https://github.com/prometheus/artifactory_exporter#flags
+# visit https://github.com/peimanja/artifactory_exporter#flags
 options:
   logLevel: info
   logFormat: logfmt
