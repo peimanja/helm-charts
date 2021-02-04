@@ -3,6 +3,23 @@ entries:
   prometheus-artifactory-exporter:
   - apiVersion: v1
     appVersion: 1.9.1
+    created: "2021-02-04T22:34:28.941100111Z"
+    description: A Helm chart for the Prometheus Artifactory Exporter
+    digest: 8c783eb03eb2e2aa4d8370d2c4e11b7bb86cc526147023bf45e013ed5f0f0859
+    home: https://github.com/peimanja/artifactory_exporter
+    keywords:
+    - metrics
+    - artifactory
+    - monitoring
+    maintainers:
+    - email: peyman.ja@gmail.com
+      name: peimanja
+    name: prometheus-artifactory-exporter
+    urls:
+    - https://github.com/peimanja/helm-charts/releases/download/prometheus-artifactory-exporter-0.1.4/prometheus-artifactory-exporter-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v1
+    appVersion: 1.9.1
     created: "2021-02-04T21:25:40.814745152Z"
     description: A Helm chart for the Prometheus Artifactory Exporter
     digest: ff26feb715bea14e83a407663d637b7abe8c7a57fd369769e3b64499500785d7
