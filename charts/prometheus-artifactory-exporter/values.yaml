@@ -24,6 +24,8 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+podAnnotations: {}
+
 # Add your artifactory server details here
 # user/pass or accessToken with admin permission hast to be set
 # or set the existingSecret

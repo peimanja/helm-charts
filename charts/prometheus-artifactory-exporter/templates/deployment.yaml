@@ -18,6 +18,10 @@ spec:
       labels:
         app: {{ template "prometheus-artifactory-exporter.name" . }}
         release: {{ .Release.Name }}
+    {{- if .Values.podAnnotations }}
+      annotations:
+        {{ toYaml .Values.statefulSet.annotations | nindent 8 }}
+    {{- end }}
     spec:
       serviceAccountName: {{ template "prometheus-artifactory-exporter.serviceAccountName" . }}
       {{- with .Values.initContainers }}
