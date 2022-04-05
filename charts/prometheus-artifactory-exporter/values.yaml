@@ -16,9 +16,10 @@ serviceAccount:
   name:
 
 image:
-  registry: docker.io
+  registry: ghcr.io
   repository: peimanja/artifactory_exporter
-  tag: v1.9.1
+  # set to canary for the latest unreleased version
+  tag: v1.9.3
   pullPolicy: IfNotPresent
 
 nameOverride: ""
