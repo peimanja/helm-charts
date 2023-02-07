@@ -19,7 +19,7 @@ image:
   registry: ghcr.io
   repository: peimanja/artifactory_exporter
   # set to canary for the latest unreleased version
-  tag: v1.10.0
+  tag: v1.12.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -48,6 +48,7 @@ options:
   # visit https://github.com/peimanja/artifactory_exporter#optional-metrics for more details
   optionalMetrics: []
     # - replication_status
+    # - federation_status
 
 service:
   type: ClusterIP
