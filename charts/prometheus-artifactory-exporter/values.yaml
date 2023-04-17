@@ -46,8 +46,8 @@ options:
   timeout: 5s
   # Some metrics are expensive to collect, so they are disabled by default.
   # visit https://github.com/peimanja/artifactory_exporter#optional-metrics for more details
-  optionalMetrics:
-    - artifacts # enables artifactory_artifacts_* metrics
+  optionalMetrics: []
+    # - artifacts # enables artifactory_artifacts_* metrics
     # - replication_status # adds the `status` label to `artifactory_replication_enabled` metric
     # - federation_status # enables `artifactory_federation_*` metrics
 
