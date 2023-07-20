@@ -35,7 +35,9 @@ artifactory:
   user: ""
   pass: ""
   accessToken: "xxxxxxxxxxxxxxxxxxxxxxxx"
-  existingSecret: false
+  secret:
+    create: true
+    name: "" 
 
 # visit https://github.com/peimanja/artifactory_exporter#flags
 options:

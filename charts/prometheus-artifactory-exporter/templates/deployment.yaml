@@ -72,8 +72,11 @@ spec:
               value: {{ .Values.options.timeout| quote }}
           envFrom:
             - secretRef:
+          {{- if .Values.artifactory.secret.create }}
                 name: {{ template "prometheus-artifactory-exporter.secret" . }}
-
+          {{- else -}}
+                name: {{ .Values.artifactory.secret.name }}
+          {{- end }}
         {{- with .Values.extraContainers }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
