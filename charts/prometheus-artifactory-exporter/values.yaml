@@ -19,7 +19,7 @@ image:
   registry: ghcr.io
   repository: peimanja/artifactory_exporter
   # set to canary for the latest unreleased version
-  tag: v1.13.2
+  tag: v1.14.0
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -50,6 +50,7 @@ options:
     # - artifacts # enables artifactory_artifacts_* metrics
     # - replication_status # adds the `status` label to `artifactory_replication_enabled` metric
     # - federation_status # enables `artifactory_federation_*` metrics
+    # - open_metrics # exposes pen Metrics from the JFrog Platform
 
 service:
   type: ClusterIP
