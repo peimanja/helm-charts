@@ -63,3 +63,20 @@ Secret name for Artifactory credentials
         {{ template "prometheus-artifactory-exporter.fullname" . }}
     {{- end -}}
 {{- end -}}
+
+{{/*
+Resolve imagePullSecrets value
+*/}}
+{{- define "prometheus-artifactory-exporter.imagePullSecrets" -}}
+{{- if .Values.global.imagePullSecrets }}
+imagePullSecrets:
+{{- range .Values.global.imagePullSecrets }}
+  - name: {{ . }}
+{{- end }}
+{{- else if .Values.imagePullSecrets }}
+imagePullSecrets:
+{{- range .Values.imagePullSecrets }}
+  - name: {{ . }}
+{{- end }}
+{{- end -}}
+{{- end -}}
