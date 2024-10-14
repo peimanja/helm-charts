@@ -99,6 +99,8 @@ serviceMonitor:
   # targetLabels: []
   # metricRelabelings: []
 
+priorityClassName: ""
+
 nodeSelector: {}
 
 tolerations: []
