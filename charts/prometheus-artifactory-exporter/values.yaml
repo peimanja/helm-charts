@@ -117,10 +117,10 @@ initContainers: []
 extraContainers: []
 
 # Extra labels for the exporter deployment
-extraDeploymentLabels:  {}
+extraDeploymentLabels: {}
 
 # Extra labels for the exporter pod
-extraPodLabels:  {}
+extraPodLabels: {}
 
 # Extra Volumes for the pod
 extraVolumes: []
