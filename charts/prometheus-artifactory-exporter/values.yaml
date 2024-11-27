@@ -116,6 +116,12 @@ initContainers: []
 # Extra containers for the exporter pod
 extraContainers: []
 
+# Extra labels for the exporter deployment
+extraDeploymentLabels: {}
+
+# Extra labels for the exporter pod
+extraPodLabels: {}
+
 # Extra Volumes for the pod
 extraVolumes: []
 # - name: example

@@ -7,6 +7,9 @@ metadata:
     chart: {{ template "prometheus-artifactory-exporter.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+    {{- with .Values.extraDeploymentLabels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
@@ -18,6 +21,9 @@ spec:
       labels:
         app: {{ template "prometheus-artifactory-exporter.name" . }}
         release: {{ .Release.Name }}
+        {{- with .Values.extraPodLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
     {{- if .Values.podAnnotations }}
       annotations:
         {{ toYaml .Values.podAnnotations | nindent 8 }}
