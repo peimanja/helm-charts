@@ -51,6 +51,8 @@ options:
     # - replication_status # adds the `status` label to `artifactory_replication_enabled` metric
     # - federation_status # enables `artifactory_federation_*` metrics
     # - open_metrics # exposes pen Metrics from the JFrog Platform
+    # - access_federation_validate # enables JFrog Access Federation validation status metric
+  accessFederationTarget: ""
 
 service:
   type: ClusterIP
