@@ -76,6 +76,8 @@ spec:
               value: {{ .Values.options.verifySSL | quote }}
             - name: ARTI_TIMEOUT
               value: {{ .Values.options.timeout| quote }}
+            - name: ACCESS_FEDERATION_TARGET
+              value: {{ .Values.options.accessFederationTarget | quote }}
           envFrom:
             - secretRef:
                 name: {{ template "prometheus-artifactory-exporter.secret" . }}
