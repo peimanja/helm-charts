@@ -19,7 +19,7 @@ image:
   registry: ghcr.io
   repository: peimanja/artifactory_exporter
   # set to canary for the latest unreleased version
-  tag: v1.14.0
+  tag: v1.15.1
   pullPolicy: IfNotPresent
 
 nameOverride: ""
