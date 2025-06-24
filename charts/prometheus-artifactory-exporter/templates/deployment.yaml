@@ -43,6 +43,8 @@ spec:
           {{- range $metric := .Values.options.optionalMetrics }}
             - "--optional-metric={{ $metric }}"
           {{- end }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

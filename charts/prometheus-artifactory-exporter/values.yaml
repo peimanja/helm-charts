@@ -103,6 +103,21 @@ serviceMonitor:
 
 priorityClassName: ""
 
+podSecurityContext: {}
+# fsGroup: 1000
+
+## User and Group to run artifactory-exporter container as
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop: ["ALL"]
+
 nodeSelector: {}
 
 tolerations: []
