@@ -23,7 +23,7 @@ image:
   registry: ghcr.io
   repository: peimanja/artifactory_exporter
   # set to canary for the latest unreleased version
-  tag: v1.14.0
+  tag: v1.15.1
   pullPolicy: IfNotPresent
 
 # imagePullSecrets:
@@ -58,6 +58,8 @@ options:
     # - replication_status # adds the `status` label to `artifactory_replication_enabled` metric
     # - federation_status # enables `artifactory_federation_*` metrics
     # - open_metrics # exposes pen Metrics from the JFrog Platform
+    # - access_federation_validate # enables JFrog Access Federation validation status metric
+  accessFederationTarget: ""
 
 service:
   type: ClusterIP
@@ -106,6 +108,23 @@ serviceMonitor:
   # targetLabels: []
   # metricRelabelings: []
 
+priorityClassName: ""
+
+podSecurityContext: {}
+# fsGroup: 1000
+
+## User and Group to run artifactory-exporter container as
+securityContext:
+  runAsUser: 1000
+  runAsGroup: 1000
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+  capabilities:
+    drop: ["ALL"]
+
 nodeSelector: {}
 
 tolerations: []
@@ -120,6 +139,12 @@ initContainers: []
 
 # Extra containers for the exporter pod
 extraContainers: []
+
+# Extra labels for the exporter deployment
+extraDeploymentLabels: {}
+
+# Extra labels for the exporter pod
+extraPodLabels: {}
 
 # Extra Volumes for the pod
 extraVolumes: []
