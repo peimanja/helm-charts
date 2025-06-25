@@ -1,3 +1,7 @@
+global: {}
+  # imagePullSecrets:
+  #   - myRegistryKeySecretName
+
 # Default values for artifactory-exporter.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -21,6 +25,9 @@ image:
   # set to canary for the latest unreleased version
   tag: v1.15.1
   pullPolicy: IfNotPresent
+
+# imagePullSecrets:
+#   - myRegistryKeySecretName
 
 nameOverride: ""
 fullnameOverride: ""
