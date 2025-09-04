@@ -30,7 +30,7 @@ spec:
     {{- end }}
     spec:
     {{- if or .Values.imagePullSecrets .Values.global.imagePullSecrets }}
-{{- include "prometheus-artifactory-exporter.imagePullSecrets" . | indent 6 }}
+    {{- include "prometheus-artifactory-exporter.imagePullSecrets" . | indent 6 }}
     {{- end }}
       serviceAccountName: {{ template "prometheus-artifactory-exporter.serviceAccountName" . }}
       {{- with .Values.initContainers }}
@@ -45,7 +45,7 @@ spec:
           args:
             - "--log.level={{ .Values.options.logLevel }}"
             - "--log.format={{ .Values.options.logFormat }}"
-            - "--use-cache={{ .Values.options.useCache | quote }}"
+            - "--use-cache={{ .Values.options.useCache | default false }}"
             - "--cache-timeout={{ .Values.options.cacheTimeout | default "30s" }}"
             - "--cache-ttl={{ .Values.options.cacheTTL | default "5m"}}"
           {{- range $metric := .Values.options.optionalMetrics }}
