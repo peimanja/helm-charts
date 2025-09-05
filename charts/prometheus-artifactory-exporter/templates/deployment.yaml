@@ -45,6 +45,11 @@ spec:
           args:
             - "--log.level={{ .Values.options.logLevel }}"
             - "--log.format={{ .Values.options.logFormat }}"
+            {{- if .Values.options.useCache }}
+            - "--use-cache"
+            - "--cache-timeout={{ .Values.options.cacheTimeout | default "30s" }}"
+            - "--cache-ttl={{ .Values.options.cacheTTL | default "5m"}}"
+            {{- end }}
           {{- range $metric := .Values.options.optionalMetrics }}
             - "--optional-metric={{ $metric }}"
           {{- end }}

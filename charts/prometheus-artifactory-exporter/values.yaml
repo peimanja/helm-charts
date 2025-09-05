@@ -23,7 +23,7 @@ image:
   registry: ghcr.io
   repository: peimanja/artifactory_exporter
   # set to canary for the latest unreleased version
-  tag: v1.15.1
+  tag: v1.16.0
   pullPolicy: IfNotPresent
 
 # imagePullSecrets:
@@ -51,6 +51,9 @@ options:
   telemetryPath: /metrics
   verifySSL: false
   timeout: 5s
+  useCache: false
+  cacheTimeout: 30s
+  cacheTTL: 5m
   # Some metrics are expensive to collect, so they are disabled by default.
   # visit https://github.com/peimanja/artifactory_exporter#optional-metrics for more details
   optionalMetrics: []
@@ -77,7 +80,7 @@ ingress:
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
-  #      - chart-example.local
+  #     - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
