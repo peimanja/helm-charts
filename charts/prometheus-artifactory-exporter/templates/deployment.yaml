@@ -30,7 +30,7 @@ spec:
     {{- end }}
     spec:
     {{- if or .Values.imagePullSecrets .Values.global.imagePullSecrets }}
-    {{- include "prometheus-artifactory-exporter.imagePullSecrets" . | indent 6 }}
+{{- include "prometheus-artifactory-exporter.imagePullSecrets" . | indent 6 }}
     {{- end }}
       serviceAccountName: {{ template "prometheus-artifactory-exporter.serviceAccountName" . }}
       {{- with .Values.initContainers }}
